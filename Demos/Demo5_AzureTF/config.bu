@@ -1,0 +1,31 @@
+variant: flatcar
+version: 1.1.0
+passwd:
+  users:
+    - name: core
+      ssh_authorized_keys:
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIcw6V9/L4OqPFNC/xoKQSyAMI5KgvIjkYGoDypRPiiJ janbronicki@fedora
+storage:
+  files:
+    - path: /etc/hostname
+      mode: 0644
+      overwrite: true
+      contents:
+        inline: flatcar-azure-tofu
+systemd:
+  units:
+    - name: hello-world.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Docker Hello World on Boot
+        After=docker.service
+        Requires=docker.service
+
+        [Service]
+        Type=oneshot
+        RemainAfterExit=yes
+        ExecStart=/usr/bin/docker run --rm hello-world
+
+        [Install]
+        WantedBy=multi-user.target
