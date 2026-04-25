@@ -28,4 +28,4 @@ scp-sysext:
 	scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P $(SSH_PORT) $(K8S_SYSEXT) core@localhost:/tmp/kubernetes.raw
 
 clean:
-	rm -f config.ign $(K8S_SYSEXT)
+	rm -f config.ign

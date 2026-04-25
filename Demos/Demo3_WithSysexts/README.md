@@ -69,4 +69,4 @@ then use make scp-sysext and run kubeadm manually.
 
 8. CLEAN UP (make clean)
 
-  rm -f config.ign kubernetes-v1.33.2-x86-64.raw
+  rm -f config.ign
